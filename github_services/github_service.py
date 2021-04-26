@@ -1,5 +1,5 @@
 import threading
-from github_example.github_service.base_request import BaseRequest
+from github_services.base_request import BaseRequest
 
 
 class GithubService:

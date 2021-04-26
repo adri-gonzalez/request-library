@@ -1,6 +1,5 @@
 import os
-from assertpy import assert_that
-from github_example.rest_builder import RestBuilder
+from rest_builder import RestBuilder
 
 
 class BaseRequest(RestBuilder):
@@ -10,14 +9,11 @@ class BaseRequest(RestBuilder):
         if token is None:
             self.token = os.getenv('TOKEN')
         super().__init__(base_url='https://api.github.com',
-                         headers={'Authorization': 'token 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',
+                         headers={'Authorization': f'token {os.getenv("TOKEN")}',
                                   'Content-Type': 'application/json'})
 
     def execute_request(self, request):
-        response = request()
-        assert_that(response.status_code).is_equal_to(200)
-        assert_that(response.content).is_not_none()
-        return response.json()
+        return request().json()
 
     # def execute_request(self, request):
     #     self._authenticate_user()

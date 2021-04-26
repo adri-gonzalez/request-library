@@ -9,5 +9,5 @@ def env_definitions():
     :return: All environment variables loaded in env
     """
     load_dotenv(verbose=True)
-    env_path = Path('.') / '.env'
+    env_path = Path('') / '.env'
     load_dotenv(dotenv_path=env_path)
