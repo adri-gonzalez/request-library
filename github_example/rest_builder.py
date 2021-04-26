@@ -28,3 +28,8 @@ class RestBuilder:
 
     def delete(self, url, **kwargs):
         return self._rest_instance.session.delete(self.base_url + url, **kwargs)
+
+# rest_builder = RestBuilder(base_url='https://api.github.com',
+#                            headers={'Authorization': 'token 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'})
+# r = rest_builder.request('get', '/user')
+# r.json()
