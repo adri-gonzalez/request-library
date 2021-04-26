@@ -1,5 +1,6 @@
 import requests
 import threading
+import json
 
 
 class RestSessionFactory:
@@ -62,12 +63,44 @@ class RestBuilder:
         return self._rest_instance.session.delete(self.base_url + url, **kwargs)
 
 
+class ServiceMethods:
+    POST = 'post'
+    PUT = 'put'
+    GET = 'get'
+    DELETE = 'delete'
+    HEAD = 'head'
+    PATCH = 'patch'
+
+
 class GitHubService(RestBuilder):
     def __init__(self):
         super().__init__(base_url='https://api.github.com',
-                         headers={'Authorization': 'token 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'})
+                         headers={'Authorization': 'token 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',
+                                  'Content-Type': 'application/json'})
 
 
+# CREATE GITHUB SERVICE
 github_service = GitHubService()
-request_response = github_service.request(method='get', url='/users')
-print(request_response)
+
+# GET GITHUB USER:
+get_user_response = github_service.request(ServiceMethods.GET, url='/users')
+
+# CREATE REPOSITORY
+create_repository_response_json = github_service.request(ServiceMethods.POST, url='/user/repos',
+                                                         json={"name": "new-repository-api",
+                                                               "description": "This is your first repository",
+                                                               "homepage": "https://github.com",
+                                                               "private": True,
+                                                               "has_issues": True,
+                                                               "has_projects": True,
+                                                               "has_wiki": True})
+
+# CREATE REPOSITORY
+create_repository_response_data = github_service.request(ServiceMethods.POST, url='/user/repos',
+                                                         data=json.dumps({"name": "new-repository-api",
+                                                                          "description": "This is your first repository",
+                                                                          "homepage": "https://github.com",
+                                                                          "private": True,
+                                                                          "has_issues": True,
+                                                                          "has_projects": True,
+                                                                          "has_wiki": True}))

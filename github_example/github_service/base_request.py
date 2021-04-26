@@ -9,8 +9,9 @@ class BaseRequest(RestBuilder):
             self.username = os.getenv('USERNAME')
         if token is None:
             self.token = os.getenv('TOKEN')
-        super().__init__(base_url='https://api.github.com', auth={self.username, self.token},
-                         headers={'content-type': 'application/json'})
+        super().__init__(base_url='https://api.github.com',
+                         headers={'Authorization': 'token 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',
+                                  'Content-Type': 'application/json'})
 
     def execute_request(self, request):
         response = request()
