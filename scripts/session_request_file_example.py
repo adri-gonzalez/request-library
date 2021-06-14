@@ -75,7 +75,7 @@ class ServiceMethods:
 class GitHubService(RestBuilder):
     def __init__(self):
         super().__init__(base_url='https://api.github.com',
-                         headers={'Authorization': 'token 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',
+                         headers={'Authorization': f'token put_some_token_here',
                                   'Content-Type': 'application/json'})
 
 

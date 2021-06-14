@@ -1,60 +1,57 @@
 """
-    The internet is basically made up of requests and responses.
-    Using Python's requests library, we can look into how this works.
-    http://docs.python-requests.org/en/latest/api/
     Commands
         GET
-            Read an existing resource.  This is like SELECT in SQL
+            Leer un recurso existente. Esto es como SELECT en SQL
         HEAD
-            Similar to GET except server doesn't return a message-body in
-            response.  Instead, it gets the metadata of an existing resource.
+            Similar a GET, excepto que el servidor no devuelve un cuerpo de mensaje en
+            respuesta. En cambio, obtiene los metadatos de un recurso existente.
         POST
-            Creates a new resource.  This is like INSERT in SQL
+            Crea un nuevo recurso. Esto es como INSERT en SQL
         PUT
-            Updates an existing resource.  This is like UPDATE in SQL
+            Actualiza un recurso existente. Esto es como ACTUALIZAR en SQL
         PATCH
-            Usually not implemented.  Updates part of an existing resource.
-            This is like UPDATE in SQL
+            Generalmente no implementado. Actualiza parte de un recurso existente.
+            Esto es como ACTUALIZAR en SQL
         DELETE
-            Deletes an existing resource.  This is like DELETE in SQL
+            Elimina un recurso existente. Esto es como BORRAR en SQL
     Important HTTP Status Codes
-        200 OK means Success
-            GET - returns resource
-            PUT - Provides status message or returns message
-        201 Created means Success
-            POST - Provides status message or returns newly created resource
-        204 No Content means Success
-            Completed, but nothing to return (because of no content)
-        304 Unchanged means Redirect
-            There's no changes since the last request (usually used to checking a field like 'Last-Modified' and 'Etag' headers, which is a mechanism for web cache validation)
-        400 Bad Request means Failure
-            PUT - returns error message, including form validation errors
-            POST - returns error message, including form validation errors
-        401 Unauthorized means Failure
-            Authentication required but user did not provide credentials
-        403 Forbidden means Failure
-            User attempted to access restricted content
-        404 Not Found means Failure
-            Resource was not found
-        405 Method Not Allowed means Failure
-            An invalid HTTP method was attempted
-        410 Gone means Failure
-            A method was attempted that is no longer supported.
-            E.g. mobile apps can test for this condition and if it occurs,
-                 tell the user to upgrade
-        500 Internal Server Error means Failure
-            The server encountered an unexpected condition
+        200 OK significa éxito
+            GET: devuelve el recurso
+            PUT: proporciona un mensaje de estado o devuelve un mensaje
+        201 Creado significa éxito
+            POST: proporciona un mensaje de estado o devuelve un recurso recién creado
+        204 Sin contenido significa éxito
+            Completado, pero nada para devolver (debido a que no hay contenido)
+        304 Sin cambios significa Redirigir
+            No hay cambios desde la última solicitud (generalmente se usa para verificar un campo como los encabezados 'Última modificación' y 'Etag', que es un mecanismo para la validación de la caché web)
+        400 Solicitud incorrecta significa falla
+            PUT: devuelve un mensaje de error, incluidos los errores de validación del formulario
+            POST: devuelve un mensaje de error, incluidos los errores de validación del formulario
+        401 No autorizado significa Fallo
+            Se requiere autenticación, pero el usuario no proporcionó las credenciales.
+        403 Prohibido significa Fracaso
+            El usuario intentó acceder a contenido restringido
+        404 No encontrado significa falla
+            No se encontró el recurso
+        405 Método no permitido significa falla
+            Se intentó un método HTTP no válido
+        410 Ido significa fracaso
+            Se intentó un método que ya no es compatible.
+            P.ej. Las aplicaciones móviles pueden probar esta condición y, si ocurre,
+                 decirle al usuario que actualice
+        500 Error interno del servidor significa falla
+            El servidor encontró una condición inesperada
     Sample API URLS
-        api/v1/resume
-            for GET and POST
-        api/v1/resume/:slug/
-            for GET, PUT, DELETE
-        api/v1/job
-            for GET and POST
-        api/v1/job/:slug/
-            for GET, PUT, DELETE
-        Same goes for say api/v1/education and api/v1/experience
-        slug represents a variable (e.g. the resume id)
+        api / v1 / resume
+            para GET y POST
+        api / v1 / resume /: slug /
+            para OBTENER, PONER, ELIMINAR
+        api / v1 / trabajo
+            para GET y POST
+        api / v1 / job /: slug /
+            para OBTENER, PONER, ELIMINAR
+        Lo mismo ocurre con api / v1 / education y api / v1 / experience
+        slug representa una variable (por ejemplo, la identificación del currículum)
 """
 
 import json
@@ -305,12 +302,6 @@ if __name__ == '__main__':
     print('###########################################')
     print('[6] ######### GET JSON RESPONSE CONTENT #########')
     json_response_content()
-    # print('###########################################')
-    # print('[7] ######### VERSATILE RESPONSE CODES #########')
-    # versatile_response_codes()
-    # print('###########################################')
-    # print('[8] ######### GET COOKIES #########')
-    # accessing_cookies()
     print('###########################################')
     print('[9] ######### REQUEST WITH NO REDIRECT #########')
     request_no_redirect()
