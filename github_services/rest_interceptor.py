@@ -37,22 +37,3 @@ def _check_query_string(query_string, query_string_values):
             continue
         new_dict[key] = value['default']
     return new_dict
-
-# def rest_service(url, http_method, query_string=None, header_params=None, default_payload=None):
-#     def decorator(func):
-#         def wrapper(payload={}, query_string_values={}, url_params={}, header_params_values={}):
-#             qs_params = None
-#             payload_f = default_payload
-#             if re.findall("({\w+})+", url):
-#                 complete_url = url.format_map(url_params)
-#             if query_string is not None:
-#                 qs_params = _check_query_string(query_string, query_string_values)
-#             if payload is not None:
-#                 payload_f = payload
-#             service = GithubService.instance().base_request
-#             return service.execute_request(
-#                 lambda c: service.request(http_method, complete_url, cookies=c, params=qs_params, json=payload_f))
-#
-#         return wrapper
-#
-#     return decorator
